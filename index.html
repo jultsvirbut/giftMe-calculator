@@ -12,19 +12,17 @@
 </head>
 
 <body onload='hideTotal()'>
+
   <div class="container">
-    <form id="itemform" onsubmit="return false;">
-      <div class="checkbox">
-      <legend>Собери сам</legend>    
-        <p><input type="checkbox" name="selecteditem" value="sweetmeats" onclick="calculateTotal()">Леденцы</p>
-        <p><input type="checkbox" name="selecteditem" value="candle" onclick="calculateTotal()">Свеча</p>
-        <p><input type="checkbox" name="selecteditem" value="toy" onclick="calculateTotal()">Игрушка</p>
-        <p><input type="checkbox" name="selecteditem" value="cupwhite" onclick="calculateTotal()">Чашка белая</p>
-        <p><input type="checkbox" name="selecteditem" value="tea" onclick="calculateTotal()">Чай (кофе)</p>
-        <p><input type="checkbox" name="selecteditem" value="honey" onclick="calculateTotal()">Мед</p>
-      </div>
-      <legend><div id="totalPrice"></div></legend>
+    <div class="checkbox">
+      <form name="productsForm" id="products-form" class="form-horizontal">
+        <legend>Собери сам</legend>    
         
+     
+        
+      </form>  
+      <legend><div id="totalPrice"></div></legend>
+    </div>  
   </div>
 
 </body>
