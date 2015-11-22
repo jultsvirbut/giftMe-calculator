@@ -41,41 +41,57 @@ function renderLabelForProductCheckbox(product) {
     }).prepend(checkbox);
 }
 
+function calculateAndShowTotalPrice(price){
+    var Tprice = price*1.3 + 30000;
+    var divobj = document.getElementById('totalPrice');
+    divobj.style.display='block';
+    divobj.innerHTML = "Цена набора "+Tprice+" BYR";
+}
+
+
 products.forEach(function(product) {
     var labeledCheckbox = renderLabelForProductCheckbox(product);
     labeledCheckbox.appendTo(form);
 });
 
 
-function purchasePrice(){
+
+
+
+$('input[type="checkbox"]').click(function(){
+    if (this.checked) {
+        var price=0;
+        products.forEach(function(product) {
+            console.log(product.enName);
+            if ($('#'+product.enName).checked) {
+                console.log(111);
+                price+=parseInt(product.price);
+            }
+        })
+        calculateAndShowTotalPrice(price);
+    }
+}) 
+
+/*function purchasePrice(){
 var price=0;
-var theForm=document.forms["itemform"];
-var selectedItems=theForm.elements["selecteditem"];
-   
-    for(var i=0;i<selectedItems.length;i++){
-        if (selectedItems[i].checked==true){
-    price+=item_prices[selectedItems[i].value];
-    console.log(price);
+    for(var i=0;i<products.length;i++){
+        
+        if ($('#'+products[i].enName).checked==true){
+            price+=parseInt(products[i].price);
+            console.log(price);
         }
     } 
     return price;
-}
+}*/
 
-function calculateTotal()
-{
-   var Tprice = purchasePrice()*1.3 + 30000;
 
-    var divobj = document.getElementById('totalPrice');
-    divobj.style.display='block';
-    divobj.innerHTML = "Цена набора "+Tprice+" BYR";
 
-}
-
-function hideTotal()
+/*function hideTotal()
 {
     var divobj = document.getElementById('totalPrice');
     divobj.style.display='none';
-}
+}*/
+
 
 
 });
