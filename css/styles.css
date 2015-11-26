@@ -1,4 +1,7 @@
 #quote{
-  display: none;}
+  display: none;
+}
 
-
+form label {
+  display: block;
+}
