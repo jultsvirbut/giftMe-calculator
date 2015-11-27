@@ -1,5 +1,6 @@
 jQuery(document).ready(function(){
     var products = [
+        { enName: 'box', ruName:'Коробка', price: '30000' },
         { enName: 'sweet', ruName: 'Леденцы', price: '30000' },
         { enName: 'candle', ruName:'Свеча', price: '70000' },
         { enName: 'toy', ruName:'Игрушка', price: '50000' },
@@ -17,6 +18,7 @@ jQuery(document).ready(function(){
         { enName: 'wine', ruName:'Чашка для глинтвейна', price: '60000' },
         { enName: 'spice', ruName:'Специи в мешочке', price: '40000' },
         { enName: 'cinnamon', ruName:'Палочки корицы', price: '20000' }
+
     ];
 
     var form = $('#products-form');
@@ -61,9 +63,9 @@ jQuery(document).ready(function(){
             priceBlock = $('#totalPrice');
 
         if (totalPrice) {
-            priceBlock.html('Цена набора ' + totalPrice + ' BYR');
+            priceBlock.html('Стоимость вашей коробки ' + totalPrice + ' BYR');
         } else {
-            priceBlock.html('Выберете продукты.')
+            priceBlock.html('Выберите продукты')
         }
     }
 
