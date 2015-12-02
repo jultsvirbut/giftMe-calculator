@@ -1,4 +1,13 @@
 jQuery(document).ready(function(){
+    var boxes = [
+        {
+            enName: 'first small box',
+            ruName: 'первая маленькая коробка',
+            price: 250000,
+            productNames: ['sweet', 'candle', 'cupwhite']
+        }
+    ]
+
     var products = [
         { enName: 'sweet', ruName: 'Леденцы', price: '30000' },
         { enName: 'candle', ruName:'Свеча', price: '70000' },
@@ -44,8 +53,35 @@ jQuery(document).ready(function(){
         labeledCheckbox.appendTo(form);
     });
 
+    function matchBox() {
+        var matchedPrice = 0;
+
+        var selectedProductNames = $('input[type="checkbox"]:checked').map(function (index, checkbox) {
+            return checkbox.name;
+        }).toArray();
+
+        var isBoxMatched = false;
+
+        boxes.forEach(function(box) {
+            var stringifySelectedProductNames = selectedProductNames.sort().toString(),
+                stringifyBoxProductNames = box.productNames.sort().toString();
+
+            if (stringifySelectedProductNames === stringifyBoxProductNames) {
+                matchedPrice = box.price;
+                isBoxMatched = true;
+            };
+        });
+
+        return { isBoxMatched: isBoxMatched, price: matchedPrice };
+    }
+
     function calculateTotalPrice() {
-        var price = 0;
+        var price = 0,
+            matchedBox = matchBox();
+
+        if (matchedBox.isBoxMatched) {
+            return matchedBox.price;
+        };
 
         $('input[type="checkbox"]:checked').each(function(index, checkbox) {
             var productPrice = parseInt(checkbox.value);

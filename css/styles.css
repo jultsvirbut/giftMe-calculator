@@ -3,5 +3,6 @@
 }
 
 form label {
-  display: block;
+  display: inline-block;
+  width: 50%;
 }
